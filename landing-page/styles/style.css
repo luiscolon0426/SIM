@@ -10,6 +10,8 @@ body {
     line-height: 20px;
     font-weight: 400;
     padding: 30px 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Navigationbar {
@@ -39,20 +41,7 @@ a:link {
 }
 
 .About-nav {
-    text-align: center;
-    padding: 20px;
-    margin: 0px;
-    display: inline-block;
-}
-
-.login-nav {
-    text-align: center;
-    padding: 20px;
-    margin: 0px;
-    display: inline-block;
-}
-
-.register-nav {
+    color: #1a1b1f;
     text-align: center;
     padding: 20px;
     margin: 0px;
@@ -60,15 +49,15 @@ a:link {
 }
 
 .sim-nav {
+    color: #1a1b1f;
     text-align: center;
     padding: 20px;
     margin: 0px;
     display: inline-block;
 }
 
-.upload-nav:link {
-    color: white;
-    background-color: #1a1b1f;
+.download-nav:link {
+    color: #1a1b1f;
     text-align: center;
     padding: 20px;
     margin: 0px;
@@ -159,7 +148,7 @@ a:link {
     font-weight: 400;
     size: 12px;
     height: 290px;
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 0px;
     margin-bottom: 10px;
     margin-right: 500px;
@@ -172,7 +161,7 @@ a:link {
     font-weight: 400;
     size: 14px;
     height: 290px;
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 0px;
     margin-right: -300px;
     margin-bottom: 10px;
@@ -215,7 +204,7 @@ a:link {
     font-weight: 400;
     size: 12px;
     height: 290px;
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 0px;
     margin-bottom: 10px;
     margin-right: 500px;
@@ -228,7 +217,7 @@ a:link {
     font-weight: 400;
     size: 14px;
     height: 290px;
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 0px;
     margin-right: -300px;
     margin-bottom: 10px;
@@ -293,4 +282,79 @@ a:link {
     height: 100px;
     font-size: 25px;
     margin-right: -350px;
+}
+
+
+/* Start of About us section */
+
+.pfp {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+.Ltext,
+.Jtext,
+.Gtext {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.Jtext {
+    margin-top: 250px;
+}
+
+.circle-pfp {
+    border-radius: 500px;
+}
+
+.info-center,
+.name-center,
+.links {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+.links {
+    justify-content: space-between;
+}
+
+.name-center {
+    padding-top: 20px;
+}
+
+.info-center {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 800px) {
+    .Jtext {
+        margin-top: 10px;
+    }
+}
+
+.Creators-header {
+    background-image: url('styles/Assets/sim\ frontimage.jpg') no-repeat;
+    color: white;
+    background-color: black;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    background-position: 40px;
+}
+
+.Creators-p {
+    text-align: center;
+    font-size: 45px;
+}
+
+.descript {
+    font-size: 20px;
 }
