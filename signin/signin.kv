@@ -4,11 +4,11 @@
 <SigninWindow>:
     id: main_win
     orientation: "vertical"
-    spacing: 10
+    spacing: 150
     space_x: self.size[0]/3
     canvas.before:
         Color:
-            rgba: (1,1,1, 1)
+            rgba: (1,1,1,1)
         Rectangle:
             size: self.size
             pos: self.pos
@@ -18,7 +18,7 @@
         height: 50
         canvas.before:
             Color:
-                rgba: (.06, .45, .45, 1)
+                rgba: (0,0,0,1)
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -33,7 +33,6 @@
     BoxLayout:
         orientation: 'vertical'
         padding: main_win.space_x, 10
-        #spacing: 20
         BoxLayout:
             orientation: "vertical"
             spacing: 10
@@ -65,7 +64,7 @@
             text: "Sign In"
             size_hint_y: None
             height: 40
-            background_color: (.06, .45, .45, 1)
+            background_color: (0,0,0,1)
             background_normal: ''
             on_release: root.validate_user()
         Label:
