@@ -1,7 +1,9 @@
 <FlatButton@ButtonBehavior+Label>:
+# Styles for the FlatButton widget
     font_size: 16
 
 <SigninWindow>:
+# Styles for the SigninWindow screen
     id: main_win
     orientation: "vertical"
     spacing: 150
@@ -12,8 +14,8 @@
         Rectangle:
             size: self.size
             pos: self.pos
-
     BoxLayout:
+    # Styles for the header box
         size_hint_y: None
         height: 50
         canvas.before:
@@ -23,17 +25,18 @@
                 size: self.size
                 pos: self.pos
         Label:
-            text: "Access Control"
+            text: "SIM"
             bold: True
             size_hint_x: .9
-
         FlatButton:
             text: "x"
             size_hint_x: .1
     BoxLayout:
+    # Styles for the content box
         orientation: 'vertical'
         padding: main_win.space_x, 10
         BoxLayout:
+        # Styles for the input boxes
             orientation: "vertical"
             spacing: 10
             size_hint_y: None
@@ -45,12 +48,14 @@
                 size_hint_y: None
                 height: 20
             TextInput:
+            # Box for the username
                 id: usr_field
                 hint_text: "Username"
                 multiline: False
                 focus: True
                 on_text_validate: pwd_field.focus = True
             TextInput:
+            # Box for the password
                 id: pwd_field
                 hint_text: "Password"
                 multiline: False
@@ -61,6 +66,7 @@
             size_hint_y: None
             height: 40
         Button:
+        # Sign in button
             text: "Sign In"
             size_hint_y: None
             height: 40

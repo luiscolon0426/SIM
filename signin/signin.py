@@ -1,11 +1,21 @@
+'''
+Sign in screen
+'''
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 
+
 class SigninWindow(BoxLayout):
     def __init__(self, **kwargs):
+        '''
+        Constructor
+        '''
         super().__init__(**kwargs)
 
     def validate_user(self):
+        '''
+        Validates if the user exists or not
+        '''
         user = self.ids.usr_field
         pwd = self.ids.pwd_field
         info = self.ids.info
@@ -18,9 +28,17 @@ class SigninWindow(BoxLayout):
         else:
             info.text = '[color=#FF0000]Invalid username and/or password[/color]'
 
+
 class SigninApp(App):
     def build(self):
+        '''
+        Build the app
+        '''
         return SigninWindow()
 
+
 if __name__ == "__main__":
+    '''
+    Run the app
+    '''
     SigninApp().run()
