@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 import re
 
+
 class OpWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -11,27 +12,24 @@ class OpWindow(BoxLayout):
         self.total = 0.00
 
     def update_purchases(self):
-        pcode = self.ids.code_input.text
+        pname = self.ids.code_input.text
         products_container = self.ids.products
-        if pcode == '1234' or pcode == '2345':
-            details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+        if pname == 'Product One' or pname == 'Product Two':
+            details = BoxLayout(size_hint_y=None, height=30,
+                                pos_hint={'top': 1})
             products_container.add_widget(details)
-            code = Label(text=pcode,size_hint_x=.2,color=(.06,.45,.45,1))
-            name = Label(text='Product One',size_hint_x=.3,color=(.06,.45,.45,1))
-            qty = Label(text='1',size_hint_x=.1,color=(.06,.45,.45,1))
-            disc = Label(text='0.00',size_hint_x=.1,color=(.06,.45,.45,1))
-            price = Label(text='0.00',size_hint_x=.1,color=(.06,.45,.45,1))
-            total = Label(text='0.00',size_hint_x=.2,color=(.06,.45,.45,1))
+            code = Label(text='1', size_hint_x=.2, color=(0, 0, 0, 1))
+            name = Label(text=pname, size_hint_x=.3,
+                         color=(0, 0, 0, 1))
+            qty = Label(text='1', size_hint_x=.1, color=(0, 0, 0, 1))
+            total = Label(text='0.00', size_hint_x=.2,
+                          color=(0, 0, 0, 1))
             details.add_widget(code)
             details.add_widget(name)
             details.add_widget(qty)
-            details.add_widget(disc)
-            details.add_widget(price)
             details.add_widget(total)
-            #Update Preview
-            pname = "Product One"
-            if pcode == '2345':
-                pname = "Product Two"
+            # Update Preview
+
             pprice = 1.00
             pqty = str(1)
             self.total += pprice
@@ -44,20 +42,21 @@ class OpWindow(BoxLayout):
             if _prev > 0:
                 prev_text = prev_text[:_prev]
             ptarget = -1
-            for i,c in enumerate(self.cart):
-                if c == pcode:
+            for i, c in enumerate(self.cart):
+                if c == pname:
                     ptarget = i
             if ptarget >= 0:
                 pqty = self.qty[ptarget]+1
                 self.qty[ptarget] = pqty
-                expr = '%s\t\tx\d\t'%(pname)
+                expr = '%s\t\tx\d\t' % (pname)
                 rexpr = pname+'\t\tx'+str(pqty)+'\t'
-                nu_text = re.sub(expr,rexpr,prev_text)
+                nu_text = re.sub(expr, rexpr, prev_text)
                 preview.text = nu_text + purchase_total
             else:
-                self.cart.append(pcode)
+                self.cart.append(pname)
                 self.qty.append(1)
-                nu_preview = '\n'.join([prev_text,pname+'\t\tx'+pqty+'\t\t'+str(pprice),purchase_total])
+                nu_preview = '\n'.join(
+                    [prev_text, pname+'\t\tx'+pqty+'\t\t'+str(pprice), purchase_total])
                 preview.text = nu_preview
 
 
@@ -66,5 +65,5 @@ class OpApp(App):
         return OpWindow()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     OpApp().run()
