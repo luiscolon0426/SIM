@@ -36,6 +36,14 @@
         orientation: 'vertical'
         padding: main_win.space_x, 10
         BoxLayout:
+        # Styles for the logo
+            orientation: 'vertical'
+            size: root.width, root.height
+            Image:
+                source: 'img/SIMlogo.png'
+                allow_stretch: True
+                keep_ratio: True
+        BoxLayout:
         # Styles for the input boxes
             orientation: "vertical"
             spacing: 10
