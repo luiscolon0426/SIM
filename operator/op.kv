@@ -1,7 +1,9 @@
 <FlatButton@ButtonBehavior+Label>:
+# Styles for the FlatButton widget
     font_size: 14
 
 <OpWindow>:
+# Styles for the OpWindow screen
     id: main_win
     orientation: 'vertical'
     canvas.before:
@@ -11,6 +13,7 @@
             size: self.size
             pos: self.pos
     BoxLayout:
+    # Styles for the header box
         id: header
         size_hint_y: None
         height: 40
@@ -31,6 +34,7 @@
             color: (1,1,1,1)
 
     BoxLayout:
+    # Styles for the current item box
         id: current
         size_hint_y: None
         height: 50
@@ -51,6 +55,7 @@
             background_normal: ''
             background_color: (.4,.4,.4,1)
     BoxLayout:
+    # Styles for the details box
         padding: 10
         BoxLayout:
             id: product_details
@@ -114,6 +119,7 @@
                     id: products
                     cols: 1
     BoxLayout:
+    # Styles for the footer box
         id: footer
         size_hint_y: None
         height: 30

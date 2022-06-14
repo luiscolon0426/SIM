@@ -1,11 +1,18 @@
+'''
+Operator screen
+'''
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 import re
 from pymongo import MongoClient
 
+
 class OpWindow(BoxLayout):
     def __init__(self, **kwargs):
+        '''
+        Constructor
+        '''
         super().__init__(**kwargs)
         client = MongoClient()
         self.db = client.sim
@@ -15,6 +22,9 @@ class OpWindow(BoxLayout):
         self.total = 0
 
     def update_purchases(self):
+        '''
+        Updates the content table
+        '''
         pname = self.ids.name_input.text
         products_container = self.ids.products
         target_name == self.stocks.find_one({'product_name':pname})
@@ -31,7 +41,6 @@ class OpWindow(BoxLayout):
             details.add_widget(name)
             details.add_widget(qty)
             details.add_widget(total)
-            #Update Preview
             pname = name.text
             pqty = str(1)
             self.total += pqty
@@ -64,8 +73,14 @@ class OpWindow(BoxLayout):
 
 class OpApp(App):
     def build(self):
+        '''
+        Build the app
+        '''
         return OpWindow()
 
 
 if __name__=="__main__":
+    '''
+    Run the app
+    '''
     OpApp().run()
