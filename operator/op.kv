@@ -29,6 +29,7 @@
             id: loggedin_user
             text: 'admin'
             color: (1,1,1,1)
+
     BoxLayout:
         id: current
         size_hint_y: None
@@ -55,23 +56,26 @@
             background_normal: ''
             background_color: (.06, .65, .65, 1)
             size_hint_x: .2
+
     BoxLayout:
         padding: 10
         BoxLayout:
             id: product_details
-            orientation: 'vertical'
+            orientation: "vertical"
             size_hint_x: .8
             spacing: 10
+
             BoxLayout:
                 id: product_labels
                 size_hint_y: None
                 height: 40
                 canvas.before:
                     Color:
-                        rgba: (.06, .45, .45, 1)
+                        rgba: (.06,.45,.45, 1)
                     Rectangle:
                         size: self.size
                         pos: self.pos
+                    
                 FlatButton:
                     text: 'Qty'
                     size_hint_x: .1
@@ -93,6 +97,7 @@
                 FlatButton:
                     text: 'Product Total'
                     size_hint_x: .2
+
             BoxLayout:
                 id: product_inputs
                 size_hint_y: None
@@ -129,7 +134,7 @@
                     height: 30
                     canvas.before:
                         Color:
-                            rgba: (.06, .45, .45, 1)
+                            rgba: (.06, .45,.45, 1)
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -154,10 +159,14 @@
                 GridLayout:
                     id: products
                     cols: 1
+                
+
+
         BoxLayout:
             id: preview
             orientation: 'vertical'
             size_hint_x: .2
+
             TextInput:
                 id: receipt_preview
                 readonly: True
@@ -170,7 +179,7 @@
             Color:
                 rgba: (.06, .47, .47, 1)
             Rectangle:
-                size: self.size
                 pos: self.pos
+                size: self.size
         Label:
             text: 'Luis Colon - Jhonatan Rivera - Gabriel Lopez'
