@@ -16,7 +16,7 @@
         height: 40
         canvas.before:
             Color:
-                rgba: (.06, .45, .45, 1)
+                rgba: (0,0,0,1)
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -36,27 +36,20 @@
         height: 50
         canvas.before:
             Color:
-                rgba: (1,1,1, 1)
+                rgba: (1,1,1,1)
             Rectangle:
                 size: self.size
                 pos: self.pos
         Button:
             text: 'Current Item:'
             background_normal: ''
-            background_color: (.06, .32, .32, 1)
+            background_color: (.4,.4,.4,1)
             size_hint_x: .4
         Button:
             id: cur_product
             text: 'Default Product'
             background_normal: ''
-            background_color: (.06, .4, .4, 1)
-        Button: 
-            id: cur_price
-            text: '0.00'
-            background_normal: ''
-            background_color: (.06, .65, .65, 1)
-            size_hint_x: .2
-
+            background_color: (.4,.4,.4,1)
     BoxLayout:
         padding: 10
         BoxLayout:
@@ -64,40 +57,22 @@
             orientation: "vertical"
             size_hint_x: .8
             spacing: 10
-
             BoxLayout:
                 id: product_labels
                 size_hint_y: None
                 height: 40
                 canvas.before:
                     Color:
-                        rgba: (.06,.45,.45, 1)
+                        rgba: (0,0,0,1)
                     Rectangle:
                         size: self.size
                         pos: self.pos
-                    
                 FlatButton:
                     text: 'Qty'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'Product Code'
-                    size_hint_x: .3
-                FlatButton:
-                    text: 'Disc'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'Disc %'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'VAT'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'Price'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'Product Total'
                     size_hint_x: .2
-
+                FlatButton:
+                    text: 'Product Name'
+                    size_hint_x: .8
             BoxLayout:
                 id: product_inputs
                 size_hint_y: None
@@ -105,27 +80,12 @@
                 spacing: 5
                 TextInput:
                     id: qty_input
-                    size_hint_x: .1
+                    size_hint_x: .2
                 TextInput:
-                    id: code_input
-                    size_hint_x: .3
+                    id: name_input
+                    size_hint_x: .8
                     multiline: False
                     on_text_validate: root.update_purchases()
-                TextInput:
-                    id: disc_input
-                    size_hint_x: .1
-                TextInput:
-                    id: disc_perc_input
-                    size_hint_x: .1
-                TextInput:
-                    id: vat_input
-                    size_hint_x: .1
-                TextInput:
-                    id: price_input
-                    size_hint_x: .1
-                TextInput:
-                    id: total_input
-                    size_hint_x: .2
             BoxLayout:
                 id: add_to_cart
                 orientation: 'vertical'
@@ -134,7 +94,7 @@
                     height: 30
                     canvas.before:
                         Color:
-                            rgba: (.06, .45,.45, 1)
+                            rgba: (0,0,0,1)
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -143,15 +103,9 @@
                         size_hint_x: .2
                     Label:
                         text: 'Product name'
-                        size_hint_x: .3
+                        size_hint_x: .5
                     Label:
                         text: 'Qty'
-                        size_hint_x: .1
-                    Label:
-                        text: 'Disc'
-                        size_hint_x: .1
-                    Label:
-                        text: 'Price'
                         size_hint_x: .1
                     Label:
                         text: 'Product total'
@@ -159,25 +113,13 @@
                 GridLayout:
                     id: products
                     cols: 1
-                
-
-
-        BoxLayout:
-            id: preview
-            orientation: 'vertical'
-            size_hint_x: .2
-
-            TextInput:
-                id: receipt_preview
-                readonly: True
-                text: 'SIM\nHolberton School\nReceipt No: \nDate: \n\n'
     BoxLayout:
         id: footer
         size_hint_y: None
         height: 30
         canvas.before:
             Color:
-                rgba: (.06, .47, .47, 1)
+                rgba: (0,0,0,1)
             Rectangle:
                 pos: self.pos
                 size: self.size
