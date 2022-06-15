@@ -2,14 +2,25 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from collections import OrderedDict
 from pymongo import MongoClient
+from utils.datatable import DataTable
 
 
 class AdminWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        print(self.get_products())
+        #print(self.get_products())
 
+        content = self.ids.scrn_content
+        users = self.get_users()
+        userstable = DataTable(table=users)
+        content.add_widget(userstable)
+
+        #Display products
+        product_scrn = self.ids.scrn_product_content
+        products = self.get_products()
+        prod_table = DataTable(table=products)
+        product_scrn.add_widget(prod_table)
 
     def get_users(self):
         client = MongoClient()
@@ -32,7 +43,10 @@ class AdminWindow(BoxLayout):
             first_names.append(user['first_name'])
             last_names.append(user['last_name'])
             user_names.append(user['user_name'])
-            passwords.append(user['password'])
+            pwd = user['password']
+            if len(pwd) > 10:
+                pwd = pwd[:10] + '...'
+            passwords.append(pwd)
             designations.append(user['designation'])
             # print(designations)
         users_length = len(first_names)
@@ -71,7 +85,10 @@ class AdminWindow(BoxLayout):
 
         for product in products.find():
             product_code.append(product['product_code'])
-            product_name.append(product['product_name'])
+            name = product['product_name']
+            if len(name) > 10:
+                name = name[:10] + '...'
+            product_name.append(name)
             product_weight.append(product['product_weight'])
             in_stock.append(product['in_stock'])
             sold.append(product['sold'])
@@ -91,6 +108,14 @@ class AdminWindow(BoxLayout):
 
             idx += 1
         return _stocks
+
+    def change_screen(self, instance=False):
+        if instance.text == 'Manage Products':
+            self.ids.scrn_mngr.current = 'scrn_product_content'
+        elif instance.text == 'Manage Users':
+            self.ids.scrn_mngr.current = 'scrn_content'
+        else:
+            self.ids.scrn_mngr.current = 'scrn_analysis'
 
 
 class AdminApp(App):
