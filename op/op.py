@@ -1,11 +1,14 @@
 '''
 Operator screen
 '''
+import imp
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 import re
 from pymongo import MongoClient
+from kivy.lang import Builder
+Builder.load_file('op/op.kv')
 
 
 

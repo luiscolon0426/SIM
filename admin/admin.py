@@ -2,6 +2,8 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from collections import OrderedDict
 from pymongo import MongoClient
+from kivy.lang import Builder
+Builder.load_file('admin/admin.kv')
 
 
 class AdminWindow(BoxLayout):
