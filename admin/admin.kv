@@ -11,18 +11,19 @@
             size: self.size
             pos: self.pos
     BoxLayout:
+    #TopBar
         id: top_nav
         size_hint_y: None
         height: 30
         canvas.before:
             Color:
-                rgba: (.06, .45, .45, 1)
+                rgba: (0,0,0, 1)
             Rectangle:
                 size: self.size
                 pos: self.pos
         FlatButton:
             id: file_trigger
-            text: 'File'
+            text: 'File:'
             on_release: file_dropdown.open(self)
             size_hint: (.1,None)
             height: 30
@@ -43,13 +44,14 @@
     BoxLayout:
         id: content_nav
         BoxLayout:
+        #left side of the screen
             id: nav_tabs
             size_hint_x: .2
             orientation: 'vertical'
             spacing: 3
             canvas.before:
                 Color:
-                    rgba: (.06, .40, .40, 1)
+                    rgba: (0,0,0, 1)
                 Rectangle:
                     size: self.size
                     pos: self.pos
@@ -58,19 +60,19 @@
                 text: 'Manage Users'
                 size_hint_y: .1
                 state: 'down'
-                background_color: (.06, .47, .47, 1)
+                background_color: (.4,.4,.4, 1)
                 background_normal: ''
             ToggleButton:
                 id: products_toggle
                 text: 'Manage Products'
                 size_hint_y: .1
-                background_color: (.06, .47, .47, 1)
+                background_color: (.4,.4,.4, 1)
                 background_normal: ''
             ToggleButton:
                 id: analysis_toggle
                 text: 'Product Analysis'
                 size_hint_y: .1
-                background_color: (.06, .47, .47, 1)
+                background_color: (.4,.4,.4, 1)
                 background_normal: ''
             Label:
                 id: sp
