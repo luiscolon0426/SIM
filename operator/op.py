@@ -8,6 +8,7 @@ import re
 from pymongo import MongoClient
 
 
+
 class OpWindow(BoxLayout):
     def __init__(self, **kwargs):
         '''
@@ -58,9 +59,9 @@ class OpWindow(BoxLayout):
             if ptarget >= 0:
                 pqty = self.qty[ptarget]+1
                 self.qty[ptarget] = pqty
-                expr = '%s\t\tx\d\t'%(pname)
+                expr = '%s\t\tx\d\t' % (pname)
                 rexpr = pname+'\t\tx'+str(pqty)+'\t'
-                nu_text = re.sub(expr,rexpr,prev_text)
+                nu_text = re.sub(expr, rexpr, prev_text)
                 preview.text = nu_text + purchase_total
             else:
                 self.cart.append(pname)
