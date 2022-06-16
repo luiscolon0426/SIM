@@ -3,6 +3,8 @@ from kivy.uix.boxlayout import BoxLayout
 from collections import OrderedDict
 from pymongo import MongoClient
 from utils.datatable import DataTable
+from kivy.lang import Builder
+Builder.load_file('admin/admin.kv')
 
 
 class AdminWindow(BoxLayout):
@@ -21,6 +23,9 @@ class AdminWindow(BoxLayout):
         products = self.get_products()
         prod_table = DataTable(table=products)
         product_scrn.add_widget(prod_table)
+        
+    def logout(self):
+        self.parent.parent.current = 'scrn_si'
 
     def get_users(self):
         client = MongoClient()
