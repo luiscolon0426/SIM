@@ -19,7 +19,7 @@ class SigninWindow(BoxLayout):
 
     def validate_user(self):
         '''
-        Validates if the user exists or not
+        comment
         '''
         client = MongoClient()
         db = client.sim
@@ -55,13 +55,13 @@ class SigninWindow(BoxLayout):
 class SigninApp(App):
     def build(self):
         '''
-        Build the app
+        comment
         '''
         return SigninWindow()
 
 
 if __name__ == "__main__":
     '''
-    Run the app
+    run the app
     '''
     SigninApp().run()
