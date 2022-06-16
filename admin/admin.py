@@ -12,6 +12,8 @@ class AdminWindow(BoxLayout):
 
         print(self.get_products())
 
+    def logout(self):
+        self.parent.parent.current = 'scrn_si'
 
     def get_users(self):
         client = MongoClient()

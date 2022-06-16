@@ -25,6 +25,9 @@ class OpWindow(BoxLayout):
         self.qty = []
         self.total = 0
 
+    def logout(self):
+        self.parent.parent.current = 'scrn_si'
+
     def update_purchases(self):
         '''
         Updates the content table

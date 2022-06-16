@@ -32,6 +32,9 @@
             id: loggedin_user
             text: 'admin'
             color: (1,1,1,1)
+            size_hint_x: .1
+            underline: True
+            on_release: root.logout()
 
     BoxLayout:
     # Styles for the current item box
