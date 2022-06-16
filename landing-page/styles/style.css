@@ -1,0 +1,360 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat;
+}
+
+body {
+    background-color: white;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 30px 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Navigationbar {
+    background-color: white;
+    width: 100%;
+    padding-bottom: 80px;
+    position: relative;
+    border-width: 50px;
+    padding: 30 50;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+    padding-right: 0px;
+    padding-left: 0px;
+    top: 13px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 0.6;
+    color: rgb(37, 37, 37);
+}
+
+.About-nav {
+    color: #1a1b1f;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    display: inline-block;
+}
+
+.sim-nav {
+    color: #1a1b1f;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    display: inline-block;
+}
+
+.download-nav:link {
+    color: #1a1b1f;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    display: inline-block;
+}
+
+.sim-image {
+    height: auto;
+    width: 100%;
+    top: -400px;
+    transform: translate(0px, -30%);
+}
+
+.img-size {
+    height: 600px;
+    margin: auto;
+    width: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.Intro-cont {
+    color: white;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 450px;
+}
+
+.p1 {
+    font-size: 64px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transform: translate(0, -1in);
+}
+
+.p2 {
+    color: #626366;
+    font-size: 22px;
+    height: 34px;
+    font-weight: 400;
+    transform: translate(0, -55px);
+}
+
+.SIMbutton {
+    background-color: white;
+    color: #1a1b1f;
+    height: fit-content;
+    width: fit-content;
+    transform: translate(0, -20px);
+    font-size: 20px;
+    padding: 20px 35px;
+    border-width: 0;
+    text-decoration: none;
+}
+
+.container1 {
+    max-width: 1140px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    transform: translate(0, 130px);
+}
+
+.Title-keep {
+    text-decoration: none;
+    padding-bottom: 20px;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+.keep-p1 {
+    color: #4e4f53;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    font-weight: 300;
+    size: 200px;
+    height: 100px;
+    font-size: 25px;
+    border-bottom: 1px solid #bdbaba;
+    margin-right: -350px;
+}
+
+.Lorem1 {
+    color: #4e4f53;
+    line-height: 26px;
+    font-weight: 400;
+    size: 12px;
+    height: 290px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    margin-bottom: 10px;
+    margin-right: 500px;
+    margin-top: 70px;
+}
+
+.Lorem2 {
+    color: #4e4f53;
+    line-height: 26px;
+    font-weight: 400;
+    size: 14px;
+    height: 290px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    margin-right: -300px;
+    margin-bottom: 10px;
+    margin-top: -300px;
+    margin-left: 700px;
+    transform: translate(10%, -1%);
+}
+
+.container2 {
+    max-width: 1140px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    transform: translate(0, 130px);
+}
+
+.Title-update {
+    text-decoration: none;
+    padding-bottom: 20px;
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 100px;
+}
+
+.update-p1 {
+    color: #4e4f53;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    font-weight: 300;
+    size: 200px;
+    height: 100px;
+    font-size: 25px;
+    border-bottom: 1px solid #bdbaba;
+    margin-right: -350px;
+}
+
+.LoremUp1 {
+    color: #4e4f53;
+    line-height: 26px;
+    font-weight: 400;
+    size: 12px;
+    height: 290px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    margin-bottom: 10px;
+    margin-right: 500px;
+    margin-top: 70px;
+}
+
+.LoremUp2 {
+    color: #4e4f53;
+    line-height: 26px;
+    font-weight: 400;
+    size: 14px;
+    height: 290px;
+    font-size: 18px;
+    letter-spacing: 0px;
+    margin-right: -300px;
+    margin-bottom: 10px;
+    margin-top: -300px;
+    margin-left: 700px;
+    transform: translate(10%, -1%);
+}
+
+.placeh1 {
+    left: 45px;
+    left: 30px;
+    padding: 20px;
+    transform: translate(-200%, 10%);
+}
+
+.placeh2 {
+    left: 45px;
+    left: 30px;
+    padding: 20px;
+    transform: translate(25%, 10%);
+}
+
+.placeh3 {
+    left: 45px;
+    left: 30px;
+    padding: 20px;
+    transform: translate(300%, 10%);
+}
+
+.container3 {
+    max-width: 1140px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    transform: translate(0, 130px);
+    margin-bottom: 400px;
+    margin-top: 150px;
+}
+
+.Download-title {
+    text-decoration: none;
+    padding-bottom: 20px;
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 100px;
+}
+
+.Title-download {
+    text-decoration: none;
+    padding-bottom: 20px;
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 100px;
+}
+
+.dowload-p1 {
+    color: #4e4f53;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    font-weight: 300;
+    size: 200px;
+    height: 100px;
+    font-size: 25px;
+    margin-right: -350px;
+}
+
+
+/* Start of About us section */
+
+.pfp {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+.Ltext,
+.Jtext,
+.Gtext {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.Jtext {
+    margin-top: 250px;
+}
+
+.circle-pfp {
+    border-radius: 500px;
+}
+
+.info-center,
+.name-center,
+.links {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+.links {
+    justify-content: space-between;
+}
+
+.name-center {
+    padding-top: 20px;
+}
+
+.info-center {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 800px) {
+    .Jtext {
+        margin-top: 10px;
+    }
+}
+
+.Creators-header {
+    background-image: url('styles/Assets/sim\ frontimage.jpg') no-repeat;
+    color: white;
+    background-color: black;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    background-position: 40px;
+}
+
+.Creators-p {
+    text-align: center;
+    font-size: 45px;
+}
+
+.descript {
+    font-size: 20px;
+}
