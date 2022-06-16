@@ -1,6 +1,3 @@
-'''
-Main screen to connect everything
-'''
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from admin.admin import AdminWindow
@@ -14,9 +11,6 @@ class MainWindow(BoxLayout):
     op_widget = OpWindow()
 
     def __init__(self, **kwargs):
-        '''
-        Constructor
-        '''
         super().__init__(**kwargs)
         self.ids.scrn_si.add_widget(self.signin_widget)
         self.ids.scrn_admin.add_widget(self.admin_widget)
@@ -25,14 +19,8 @@ class MainWindow(BoxLayout):
 
 class MainApp(App):
     def build(self):
-        '''
-        Build the app
-        '''
         return MainWindow()
 
 
-if __name__ == '__main__':
-    '''
-    Run the app
-    '''
-    MainApp.run()
+if __name__=='__main__':
+    MainApp().run()
