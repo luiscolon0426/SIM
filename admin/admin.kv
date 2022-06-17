@@ -12,6 +12,7 @@
         Rectangle:
             size: self.size
             pos: self.pos
+    
     BoxLayout:
         id: top_nav
         size_hint_y: None
@@ -22,16 +23,20 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
+        
         FlatButton:
             id: file_trigger
             text: 'File'
             on_release: file_dropdown.open(self)
             size_hint: (.1,None)
             height: 30
+
             Widget:
                 on_parent: file_dropdown.dismiss()
+            
                 DropDown:
                     id: file_dropdown
+                    
                     Button:
                         id: close
                         text: 'logout'
@@ -51,6 +56,7 @@
             height: 30
     BoxLayout:
         id: content_nav
+        
         BoxLayout:
             id: nav_tabs
             size_hint_x: .2
@@ -62,6 +68,7 @@
                 Rectangle:
                     size: self.size
                     pos: self.pos
+
             ToggleButton:
                 id: user_toggle
                 text: 'Manage Users'

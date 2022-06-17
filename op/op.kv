@@ -22,17 +22,18 @@
                 size: self.size
                 pos: self.pos
         Label:
-            text: 'SIM'
+            text: 'SilverPOS System'
             size_hint_x: .9
             bold: True
             color: (1,1,1,1)
         FlatButton:
             id: loggedin_user
-            text: 'admin'
+            text: 'jdoe'
             color: (1,1,1,1)
             size_hint_x: .1
             underline: True
             on_release: root.logout()
+
     BoxLayout:
         id: current
         size_hint_y: None
@@ -59,6 +60,7 @@
             background_normal: ''
             background_color: (.06, .65, .65, 1)
             size_hint_x: .2
+
     BoxLayout:
         padding: 10
         BoxLayout:
@@ -66,6 +68,7 @@
             orientation: "vertical"
             size_hint_x: .8
             spacing: 10
+
             BoxLayout:
                 id: product_labels
                 size_hint_y: None
@@ -76,6 +79,7 @@
                     Rectangle:
                         size: self.size
                         pos: self.pos
+                    
                 FlatButton:
                     text: 'Qty'
                     size_hint_x: .1
@@ -97,33 +101,34 @@
                 FlatButton:
                     text: 'Product Total'
                     size_hint_x: .2
+
             BoxLayout:
                 id: product_inputs
                 size_hint_y: None
                 height: 30
                 spacing: 5
                 TextInput:
-                    id: qty_input
+                    id: qty_inp
                     size_hint_x: .1
                 TextInput:
-                    id: code_input
+                    id: code_inp
                     size_hint_x: .3
                     multiline: False
                     on_text_validate: root.update_purchases()
                 TextInput:
-                    id: disc_input
+                    id: disc_inp
                     size_hint_x: .1
                 TextInput:
-                    id: disc_perc_input
+                    id: disc_perc_inp
                     size_hint_x: .1
                 TextInput:
-                    id: vat_input
+                    id: vat_inp
                     size_hint_x: .1
                 TextInput:
-                    id: price_input
+                    id: price_inp
                     size_hint_x: .1
                 TextInput:
-                    id: total_input
+                    id: total_inp
                     size_hint_x: .2
             BoxLayout:
                 id: add_to_cart
@@ -158,14 +163,18 @@
                 GridLayout:
                     id: products
                     cols: 1
+                
+
+
         BoxLayout:
             id: preview
             orientation: 'vertical'
             size_hint_x: .2
+
             TextInput:
                 id: receipt_preview
                 readonly: True
-                text: 'SIM\nHolberton School\nReceipt No: \nDate: \n\n'
+                text: 'The Collector\n123 Main St\nKnowhere, Space\n\nTel: (555)-123-456\nReceipt No: \nDate: \n\n'
     BoxLayout:
         id: footer
         size_hint_y: None
@@ -177,4 +186,4 @@
                 pos: self.pos
                 size: self.size
         Label:
-            text: 'Luis Colon - Jhonatan Rivera - Gabriel Lopez'
+            text: 'Jhonatan River - Luis Colon - Gabriel Lopez'
