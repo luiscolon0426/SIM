@@ -58,7 +58,7 @@ class AdminWindow(BoxLayout):
         products = self.get_products()
         prod_table = DataTable(table=products)
         product_scrn.add_widget(prod_table)
-    
+
     def logout(self):
         self.parent.parent.current = 'scrn_si'
 
@@ -206,6 +206,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(userstable)
     
     def update_product(self,code,name,weight,stock,sold,order,purchase):
+        product_weight = ""
 
         if code == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]Code required[/b][/color]',markup=True))
