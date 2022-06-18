@@ -7,6 +7,7 @@ import hashlib
 
 Builder.load_file('signin/signin.kv')
 
+
 class SigninWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -29,7 +30,7 @@ class SigninWindow(BoxLayout):
         if uname == '' or passw == '':
             info.text = '[color=#FF0000]username and/ or password required[/color]'
         else:
-            user = users.find_one({'user_name':uname})
+            user = users.find_one({'user_name': uname})
 
             if user == None:
                 info.text = '[color=#FF0000]Invalid Username and/or Password[/color]'
@@ -54,6 +55,7 @@ class SigninApp(App):
     def build(self):
         return SigninWindow()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     sa = SigninApp()
     sa.run()
