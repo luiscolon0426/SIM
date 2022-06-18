@@ -47,7 +47,7 @@ class OperatorWindow(BoxLayout):
             details.add_widget(total)
 
             #Update Preview
-            pname = "Product One"
+            pname = str(target_code['product_name'])
         
             pprice = float(price.text)
             pqty = str(1)
