@@ -22,17 +22,34 @@
                 size: self.size
                 pos: self.pos
         Label:
-            text: 'SilverPOS System'
+            text: 'SIM'
             size_hint_x: .9
             bold: True
             color: (1,1,1,1)
         FlatButton:
             id: loggedin_user
-            text: 'jdoe'
+            text: 'user'
             color: (1,1,1,1)
             size_hint_x: .1
             underline: True
-            on_release: root.logout()
+            on_release: file_dropdown.open(self)
+            Widget:
+                on_parent: file_dropdown.dismiss()
+                DropDown:
+                    id: file_dropdown
+                    Button:
+                        id: close
+                        text: 'logout'
+                        size_hint_y: None
+                        height: 30
+                        on_release: root.logout()
+                    Button:
+                        id: close
+                        text: 'quit'
+                        size_hint_y: None
+                        height: 30
+                        on_release: Window.close()
+
 
     BoxLayout:
         id: current

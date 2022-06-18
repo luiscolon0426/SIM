@@ -416,7 +416,6 @@ class AdminWindow(BoxLayout):
         plt.ylabel('Total Purchases')
         plt.xlabel('day')
 
-        self.ids.analysis_res.add_widget(FCK(plt.gcf()))
 
 
     def change_screen(self, instance):

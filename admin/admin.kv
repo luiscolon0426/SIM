@@ -23,20 +23,22 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-        
+        Label:
+            text: 'Admin Dashboard'
+            bold: True
+            size_hint: (.9,None)
+            height: 30
         FlatButton:
-            id: file_trigger
-            text: 'File'
+            id: loggedin_user
+            text: 'user'
             on_release: file_dropdown.open(self)
             size_hint: (.1,None)
             height: 30
-
+            underline: True
             Widget:
                 on_parent: file_dropdown.dismiss()
-            
                 DropDown:
                     id: file_dropdown
-                    
                     Button:
                         id: close
                         text: 'logout'
@@ -49,11 +51,6 @@
                         size_hint_y: None
                         height: 30
                         on_release: Window.close()
-        Label:
-            text: 'Admin Dashboard'
-            bold: True
-            size_hint: (.9,None)
-            height: 30
     BoxLayout:
         id: content_nav
         
