@@ -274,7 +274,7 @@ class AdminWindow(BoxLayout):
                 content = self.ids.scrn_contents
                 content.clear_widgets()
 
-                self.users.remove({'user_name':user})
+                self.users.delete_one({'user_name':user})
 
                 users = self.get_users()
                 userstable = DataTable(table=users)
@@ -295,7 +295,7 @@ class AdminWindow(BoxLayout):
                 content = self.ids.scrn_product_contents
                 content.clear_widgets()
 
-                self.products.remove({'product_code':code})
+                self.products.delete_one({'product_code':code})
 
                 prodz = self.get_products()
                 stocktable = DataTable(table=prodz)
