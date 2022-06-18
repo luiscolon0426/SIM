@@ -15,7 +15,6 @@ from datetime import datetime
 import hashlib
 import pandas as pd
 import matplotlib.pyplot as plt
-#from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg as FCK
 
 Builder.load_file('admin/admin.kv')
 
