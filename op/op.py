@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.lang import Builder
 
+
 import re
 from pymongo import MongoClient
 
@@ -52,7 +53,7 @@ class OperatorWindow(BoxLayout):
             pprice = float(price.text)
             pqty = str(1)
             self.total += pprice
-            purchase_total = '`\n\nTotal\t\t\t\t\t\t\t\t'+str(self.total)
+            purchase_total = '`\n\nTotal\t\t\t\t\t\t\t\t'+str(round(self.total,2))
             self.ids.cur_product.text = pname
             self.ids.cur_price.text = str(pprice)
             preview = self.ids.receipt_preview
