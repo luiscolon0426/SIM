@@ -25,6 +25,7 @@ class OperatorWindow(BoxLayout):
         
     def update_purchases(self):
         pcode = self.ids.code_inp.text
+        pqty = self.ids.qty_inp.text
         products_container = self.ids.products
 
         target_code = self.stocks.find_one({'product_code':pcode})
@@ -36,7 +37,7 @@ class OperatorWindow(BoxLayout):
 
             code = Label(text=pcode,size_hint_x=.2,color=(.06,.45,.45,1))
             name = Label(text=target_code['product_name'],size_hint_x=.3,color=(.06,.45,.45,1))
-            qty = Label(text='1',size_hint_x=.1,color=(.06,.45,.45,1))
+            qty = Label(text=pqty,size_hint_x=.1,color=(.06,.45,.45,1))
             disc = Label(text='0.00',size_hint_x=.1,color=(.06,.45,.45,1))
             price = Label(text=str(target_code['product_price']),size_hint_x=.1,color=(.06,.45,.45,1))
             total = Label(text='0.00',size_hint_x=.2,color=(.06,.45,.45,1))
@@ -46,32 +47,35 @@ class OperatorWindow(BoxLayout):
             details.add_widget(disc)
             details.add_widget(price)
             details.add_widget(total)
+            temp_qty = target_code['in_stock'] - int(pqty)
+
+            print(target_code['in_stock']) 
+            self.stocks.update_one({'product_code':pcode},{'$set':{'in_stock':temp_qty}})
+            print(target_code['in_stock'])
 
             #Update Preview
+            rec_qty = int(qty.text)
             pname = str(target_code['product_name'])
-        
-            pprice = float(price.text)
-            pqty = str(1)
+            pprice = float(price.text) * int(pqty)
+            rec_qty += int(qty.text)
             self.total += pprice
             purchase_total = '`\n\nTotal\t\t\t\t\t\t\t\t'+str(round(self.total,2))
             self.ids.cur_product.text = pname
-            self.ids.cur_price.text = str(pprice)
+            self.ids.cur_price.text = price.text
             preview = self.ids.receipt_preview
             prev_text = preview.text
             _prev = prev_text.find('`')
             if _prev > 0:
                 prev_text = prev_text[:_prev]
 
-            ptarget = -1
-            for i,c in enumerate(self.cart):
-                if c == pcode:
-                    ptarget = i
+            # ptarget = -1
+            # for i,c in enumerate(self.cart):
+            #     if c == pcode:
+            #         ptarget = i
 
-            if ptarget >= 0:
-                pqty = self.qty[ptarget]+1
-                self.qty[ptarget] = pqty
+            # if ptarget >= 0:
                 expr = '%s\t\tx\d\t'%(pname)
-                rexpr = pname+'\t\tx'+str(pqty)+'\t'
+                rexpr = pname+'\t\tx'+str(rec_qty)+'\t'
                 nu_text = re.sub(expr,rexpr,prev_text)
                 preview.text = nu_text + purchase_total
             else:
