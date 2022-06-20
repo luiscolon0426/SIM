@@ -47,10 +47,12 @@ class OperatorWindow(BoxLayout):
             details.add_widget(disc)
             details.add_widget(price)
             details.add_widget(total)
-            temp_qty = target_code['in_stock'] - int(pqty)
+            temp_qty = int(target_code['in_stock']) - int(pqty)
+            temp_sold = int(target_code['sold']) + int(pqty)
 
             print(target_code['in_stock']) 
             self.stocks.update_one({'product_code':pcode},{'$set':{'in_stock':temp_qty}})
+            self.stocks.update_one({'product_code':pcode},{'$set':{'sold':temp_sold}})
             print(target_code['in_stock'])
 
             #Update Preview
