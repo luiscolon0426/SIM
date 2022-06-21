@@ -12,7 +12,6 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    
     BoxLayout:
         id: top_nav
         size_hint_y: None
@@ -23,20 +22,22 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-        
+        Label:
+            text: 'Admin Dashboard'
+            bold: True
+            size_hint: (.9,None)
+            height: 30
         FlatButton:
-            id: file_trigger
-            text: 'File'
+            id: loggedin_user
+            text: 'user'
             on_release: file_dropdown.open(self)
             size_hint: (.1,None)
             height: 30
-
+            underline: True
             Widget:
                 on_parent: file_dropdown.dismiss()
-            
                 DropDown:
                     id: file_dropdown
-                    
                     Button:
                         id: close
                         text: 'logout'
@@ -49,14 +50,8 @@
                         size_hint_y: None
                         height: 30
                         on_release: Window.close()
-        Label:
-            text: 'Admin Dashboard'
-            bold: True
-            size_hint: (.9,None)
-            height: 30
     BoxLayout:
         id: content_nav
-        
         BoxLayout:
             id: nav_tabs
             size_hint_x: .2
@@ -68,13 +63,12 @@
                 Rectangle:
                     size: self.size
                     pos: self.pos
-
             ToggleButton:
                 id: user_toggle
                 text: 'Manage Users'
                 size_hint_y: .1
                 state: 'down'
-                background_color: (.3,.3,.3, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -82,7 +76,7 @@
                 id: products_toggle
                 text: 'Manage Products'
                 size_hint_y: .1
-                background_color: (.3,.3,.3, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -90,7 +84,7 @@
                 id: analysis_toggle
                 text: 'Product Analysis'
                 size_hint_y: .1
-                background_color: (.3,.3,.3, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -171,7 +165,6 @@
                         orientation: 'vertical'
                         spacing: 10
                         BoxLayout:
-                            # orientation: 'vertical'
                             size_hint_y: None
                             height: 45
                             Spinner:
