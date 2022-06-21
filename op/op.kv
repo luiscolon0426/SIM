@@ -95,7 +95,7 @@
                     text: 'Qty'
                     size_hint_x: .1
                 FlatButton:
-                    text: 'Product Code'
+                    text: 'Product Name'
                     size_hint_x: .3
             BoxLayout:
                 id: product_inputs
@@ -106,7 +106,7 @@
                     id: qty_inp
                     size_hint_x: .1
                 TextInput:
-                    id: code_inp
+                    id: name_inp
                     size_hint_x: .3
                     multiline: False
                     on_text_validate: root.update_purchases()
@@ -126,7 +126,7 @@
                         text: 'Code'
                         size_hint_x: .2
                     Label:
-                        text: 'Product name'
+                        text: 'Product Name'
                         size_hint_x: .3
                     Label:
                         text: 'Qty'
@@ -144,7 +144,7 @@
             TextInput:
                 id: receipt_preview
                 readonly: True
-                text: 'SIM\nHolberton School\n\n'
+                text: 'SIM\n\nHolberton School\n\n'
     BoxLayout:
         id: footer
         size_hint_y: None
