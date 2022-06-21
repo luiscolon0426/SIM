@@ -24,20 +24,19 @@ class OperatorWindow(BoxLayout):
         self.parent.parent.current = 'scrn_si'
         
     def update_purchases(self):
-        pcode = self.ids.code_inp.text
+        pname = self.ids.name_inp.text
         pqty = self.ids.qty_inp.text
         products_container = self.ids.products
-        target_code = self.stocks.find_one({'product_code':pcode})
+        target_code = self.stocks.find_one({'product_name':pname})
         if target_code == None:
             pass
         else:
             details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
             products_container.add_widget(details)
-            code = Label(text=pcode,size_hint_x=.2,color=(.06,.45,.45,1))
-            name = Label(text=target_code['product_name'],size_hint_x=.3,color=(.06,.45,.45,1))
+            code = Label(text=target_code['product_code'],size_hint_x=.2,color=(.06,.45,.45,1))
+            name = Label(text=pname,size_hint_x=.3,color=(.06,.45,.45,1))
             qty = Label(text=pqty,size_hint_x=.1,color=(.06,.45,.45,1))
             price = Label(text=str(target_code['product_price']),size_hint_x=.1,color=(.06,.45,.45,1))
-            total = Label(text='0.00',size_hint_x=.2,color=(.06,.45,.45,1))
             if int(pqty) <= int(target_code['in_stock']):
                 details.add_widget(code)
                 details.add_widget(name)
@@ -57,10 +56,9 @@ class OperatorWindow(BoxLayout):
                         message="Item is out of stock",
                         timeout=5,
                     )
-                self.stocks.update_one({'product_code':pcode},{'$set':{'in_stock':temp_qty}})
-                self.stocks.update_one({'product_code':pcode},{'$set':{'sold':temp_sold}})
+                self.stocks.update_one({'product_name':pname},{'$set':{'in_stock':temp_qty}})
+                self.stocks.update_one({'product_name':pname},{'$set':{'sold':temp_sold}})
                 rec_qty = int(qty.text)
-                pname = str(target_code['product_name'])
                 pprice = float(price.text) * int(pqty)
                 pprice = round(pprice,2)
                 rec_qty += int(qty.text)
@@ -71,19 +69,19 @@ class OperatorWindow(BoxLayout):
                 preview = self.ids.receipt_preview
                 prev_text = preview.text
                 _prev = prev_text.find('`')
-                if _prev > 0:
+                if _prev:
                     prev_text = prev_text[:_prev]
-                # ptarget = -1
-                # for i,c in enumerate(self.cart):
-                #     if c == pcode:
-                #         ptarget = i
-                # if ptarget >= 0:
+                ptarget = -1
+                for i,c in enumerate(self.cart):
+                    if c == pname:
+                        ptarget = i
+                if ptarget >= 0:
                     expr = '%s\t\tx\d\t'%(pname)
                     rexpr = pname+'\t\tx'+str(rec_qty)+'\t'
                     nu_text = re.sub(expr,rexpr,prev_text)
                     preview.text = nu_text + purchase_total
                 else:
-                    self.cart.append(pcode)
+                    self.cart.append(pname)
                     self.qty.append(1)
                     nu_preview = '\n'.join([prev_text,pname+'\t\tx'+pqty+'\t\t'+str(pprice),purchase_total])
                     preview.text = nu_preview
