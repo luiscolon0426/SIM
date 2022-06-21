@@ -8,6 +8,7 @@ from pymongo import MongoClient
 
 Builder.load_file('op/op.kv')
 
+
 class OperatorWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -21,24 +22,28 @@ class OperatorWindow(BoxLayout):
 
     def logout(self):
         self.parent.parent.current = 'scrn_si'
-        
+
     def update_purchases(self):
         pcode = self.ids.code_inp.text
         products_container = self.ids.products
 
-        target_code = self.stocks.find_one({'product_code':pcode})
+        target_code = self.stocks.find_one({'product_code': pcode})
         if target_code == None:
             pass
         else:
-            details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top': 1})
+            details = BoxLayout(size_hint_y=None, height=30,
+                                pos_hint={'top': 1})
             products_container.add_widget(details)
 
-            code = Label(text=pcode,size_hint_x=.2,color=(.06,.45,.45,1))
-            name = Label(text=target_code['product_name'],size_hint_x=.3,color=(.06,.45,.45,1))
-            qty = Label(text='1',size_hint_x=.1,color=(.06,.45,.45,1))
-            disc = Label(text='0.00',size_hint_x=.1,color=(.06,.45,.45,1))
-            price = Label(text=str(target_code['product_price']),size_hint_x=.1,color=(.06,.45,.45,1))
-            total = Label(text='0.00',size_hint_x=.2,color=(.06,.45,.45,1))
+            code = Label(text=pcode, size_hint_x=.2, color=(.06, .45, .45, 1))
+            name = Label(text=target_code['product_name'],
+                         size_hint_x=.3, color=(.06, .45, .45, 1))
+            qty = Label(text='1', size_hint_x=.1, color=(.06, .45, .45, 1))
+            disc = Label(text='0.00', size_hint_x=.1, color=(.06, .45, .45, 1))
+            price = Label(text=str(
+                target_code['product_price']), size_hint_x=.1, color=(.06, .45, .45, 1))
+            total = Label(text='0.00', size_hint_x=.2,
+                          color=(.06, .45, .45, 1))
             details.add_widget(code)
             details.add_widget(name)
             details.add_widget(qty)
@@ -46,9 +51,9 @@ class OperatorWindow(BoxLayout):
             details.add_widget(price)
             details.add_widget(total)
 
-            #Update Preview
+            # Update Preview
             pname = "Product One"
-        
+
             pprice = float(price.text)
             pqty = str(1)
             self.total += pprice
@@ -62,29 +67,30 @@ class OperatorWindow(BoxLayout):
                 prev_text = prev_text[:_prev]
 
             ptarget = -1
-            for i,c in enumerate(self.cart):
+            for i, c in enumerate(self.cart):
                 if c == pcode:
                     ptarget = i
 
             if ptarget >= 0:
                 pqty = self.qty[ptarget]+1
                 self.qty[ptarget] = pqty
-                expr = '%s\t\tx\d\t'%(pname)
+                expr = '%s\t\tx\d\t' % (pname)
                 rexpr = pname+'\t\tx'+str(pqty)+'\t'
-                nu_text = re.sub(expr,rexpr,prev_text)
+                nu_text = re.sub(expr, rexpr, prev_text)
                 preview.text = nu_text + purchase_total
             else:
                 self.cart.append(pcode)
                 self.qty.append(1)
-                nu_preview = '\n'.join([prev_text,pname+'\t\tx'+pqty+'\t\t'+str(pprice),purchase_total])
+                nu_preview = '\n'.join(
+                    [prev_text, pname+'\t\tx'+pqty+'\t\t'+str(pprice), purchase_total])
                 preview.text = nu_preview
-
 
 
 class OperatorApp(App):
     def build(self):
         return OperatorWindow()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     oa = OperatorApp()
     oa.run()
