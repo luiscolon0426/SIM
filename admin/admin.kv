@@ -12,14 +12,13 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    
     BoxLayout:
         id: top_nav
         size_hint_y: None
         height: 30
         canvas.before:
             Color:
-                rgba: (.06, .45, .45,1)
+                rgba: (0,0,0,1)
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -53,7 +52,6 @@
                         on_release: Window.close()
     BoxLayout:
         id: content_nav
-        
         BoxLayout:
             id: nav_tabs
             size_hint_x: .2
@@ -61,17 +59,16 @@
             spacing: 3
             canvas.before:
                 Color:
-                    rgba: (.06, .52, .52,1)
+                    rgba: (0,0,0,1)
                 Rectangle:
                     size: self.size
                     pos: self.pos
-
             ToggleButton:
                 id: user_toggle
                 text: 'Manage Users'
                 size_hint_y: .1
                 state: 'down'
-                background_color: (.06, .47, .47, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -79,7 +76,7 @@
                 id: products_toggle
                 text: 'Manage Products'
                 size_hint_y: .1
-                background_color: (.06, .47, .47, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -87,7 +84,7 @@
                 id: analysis_toggle
                 text: 'Product Analysis'
                 size_hint_y: .1
-                background_color: (.06, .47, .47, 1)
+                background_color: (.3,.3,.3,1)
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
@@ -168,7 +165,6 @@
                         orientation: 'vertical'
                         spacing: 10
                         BoxLayout:
-                            # orientation: 'vertical'
                             size_hint_y: None
                             height: 45
                             Spinner:
