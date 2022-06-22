@@ -30,10 +30,10 @@
         FlatButton:
             id: loggedin_user
             text: 'user'
-            on_release: file_dropdown.open(self)
             size_hint: (.1,None)
             height: 30
             underline: True
+            on_release: file_dropdown.open(self)
             Widget:
                 on_parent: file_dropdown.dismiss()
                 DropDown:
