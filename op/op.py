@@ -7,6 +7,7 @@ from kivy.lang import Builder
 from kivy.garden.notification import Notification
 import re
 from pymongo import MongoClient
+import plyer
 Builder.load_file('op/op.kv')
 
 
@@ -45,13 +46,13 @@ class OperatorWindow(BoxLayout):
                 temp_qty = int(target_code['in_stock']) - int(pqty)
                 temp_sold = int(target_code['sold']) + int(pqty)
                 if temp_qty <= 5 and temp_qty > 0:
-                    Notification().open(
+                    plyer.notification.notify(
                         title="Low stock",
                         message="Item low on stock, reorder soon",
                         timeout=5,
                     )
                 elif temp_qty <= 0:
-                    Notification().open(
+                    plyer.notification.notify(
                         title="Out of stock",
                         message="Item is out of stock",
                         timeout=5,
