@@ -20,34 +20,29 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-        Label:
-            text: 'SIM'
-            size_hint_x: .9
-            bold: True
-            color: (1,1,1,1)
         FlatButton:
             id: loggedin_user
             text: 'user'
             color: (1,1,1,1)
             size_hint_x: .1
             underline: True
-            on_release: file_dropdown.open(self)
-            Widget:
-                on_parent: file_dropdown.dismiss()
-                DropDown:
-                    id: file_dropdown
-                    Button:
-                        id: close
-                        text: 'logout'
-                        size_hint_y: None
-                        height: 30
-                        on_release: root.logout()
-                    Button:
-                        id: close
-                        text: 'quit'
-                        size_hint_y: None
-                        height: 30
-                        on_release: Window.close()
+        Label:
+            text: 'SIM'
+            size_hint_x: .7
+            bold: True
+            color: (1,1,1,1)
+        FlatButton:
+            id: close
+            text: 'Log Out'
+            size_hint_x: .1
+            height: 30
+            on_release: root.logout()
+        FlatButton:
+            id: close
+            text: 'Quit'
+            size_hint_x: .1
+            height: 30
+            on_release: Window.close()
     BoxLayout:
         id: current
         size_hint_y: None

@@ -25,31 +25,19 @@
         Label:
             text: 'Admin Dashboard'
             bold: True
-            size_hint: (.9,None)
+            size_hint: (.8,None)
             height: 30
-        FlatButton:
-            id: loggedin_user
-            text: 'user'
-            on_release: file_dropdown.open(self)
-            size_hint: (.1,None)
-            height: 30
-            underline: True
-            Widget:
-                on_parent: file_dropdown.dismiss()
-                DropDown:
-                    id: file_dropdown
-                    Button:
-                        id: close
-                        text: 'logout'
-                        size_hint_y: None
-                        height: 30
-                        on_release: root.logout()
-                    Button:
-                        id: close
-                        text: 'quit'
-                        size_hint_y: None
-                        height: 30
-                        on_release: Window.close()
+        # FlatButton:
+        #     id: loggedin_user
+        #     text: 'user'
+        #     size_hint: (.1,None)
+        #     height: 30
+        #     underline: True
+        #     on_release: file_dropdown.open(self)
+        #     Widget:
+        #         on_parent: file_dropdown.dismiss()
+        #         DropDown:
+        #             id: file_dropdown
     BoxLayout:
         id: content_nav
         BoxLayout:
@@ -83,7 +71,19 @@
             Label:
                 id: sp
                 text: ''
-                size_hint_y: .7
+                size_hint_y: .6
+            Button:
+                id: close
+                text: 'Log Out'
+                size_hint_y: None
+                height: 30
+                on_release: root.logout()
+            Button:
+                id: close
+                text: 'Quit'
+                size_hint_y: None
+                height: 30
+                on_release: Window.close()
         BoxLayout:
             id: all_content
             size_hint_x: .8
