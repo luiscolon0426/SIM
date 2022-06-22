@@ -87,7 +87,7 @@ class OperatorWindow(BoxLayout):
                     nu_preview = '\n'.join([prev_text,pname+'\t\tx'+pqty+'\t\t'+str(pprice),purchase_total])
                     preview.text = nu_preview
             else:
-                Notification().open(
+                plyer.notification.notify(
                     title="Error",
                     message="Error, not that many available",
                     timeout=5,
