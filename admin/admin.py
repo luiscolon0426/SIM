@@ -43,7 +43,6 @@ class AdminWindow(BoxLayout):
         for x in range(len(product_code)):
             line = ' | '.join([product_code[x],product_name[x]])
             spinvals.append(line)
-        self.ids.target_product.values = spinvals
         content = self.ids.scrn_contents
         users = self.get_users()
         userstable = DataTable(table=users)
@@ -358,25 +357,6 @@ class AdminWindow(BoxLayout):
             _stocks['last_purchase'][idx] = last_purchase[idx]
             idx += 1
         return _stocks
-
-    def view_stats(self):
-        plt.cla()
-        self.ids.analysis_res.clear_widgets()
-        target_product = self.ids.target_product.text
-        target = target_product[:target_product.find(' | ')]
-        name = target_product[target_product.find(' | '):]       
-        df = pd.read_csv('products_purchase.csv')
-        purchases = []
-        dates = []
-        count = 0
-        for x in range(len(df)):
-            if str(df.Product_Code[x]) == target:
-                purchases.append(df.Purchased[x])
-                dates.append(count)
-                count+=1
-        plt.bar(dates,purchases,color='teal',label=name)
-        plt.ylabel('Total Purchases')
-        plt.xlabel('day')
 
     def change_screen(self, instance):
         if instance.text == 'Manage Products':

@@ -80,14 +80,6 @@
                 background_normal: ''
                 group: 'admin_navs'
                 on_state: root.change_screen(self)
-            ToggleButton:
-                id: analysis_toggle
-                text: 'Product Analysis'
-                size_hint_y: .1
-                background_color: (.3,.3,.3,1)
-                background_normal: ''
-                group: 'admin_navs'
-                on_state: root.change_screen(self)
             Label:
                 id: sp
                 text: ''
@@ -158,22 +150,3 @@
                                 id: crud_remove_p
                                 text: 'Remove Product'
                                 on_release: root.remove_product_fields()
-                Screen:
-                    id: scrn_analysis
-                    name: 'scrn_analysis'
-                    BoxLayout:
-                        orientation: 'vertical'
-                        spacing: 10
-                        BoxLayout:
-                            size_hint_y: None
-                            height: 45
-                            Spinner:
-                                id: target_product
-                                text: 'Choose Product'
-                            Button:
-                                id: submit_analysis
-                                text: 'View Stats'
-                                size_hint_x: .3
-                                on_release: root.view_stats()
-                        BoxLayout:
-                            id: analysis_res
