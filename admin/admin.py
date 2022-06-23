@@ -76,19 +76,15 @@ class AdminWindow(BoxLayout):
         target.clear_widgets()
         crud_code = TextInput(hint_text='Product Code',multiline=False)
         crud_name = TextInput(hint_text='Product Name',multiline=False)
-        crud_weight = TextInput(hint_text='Product Weight',multiline=False)
+        crud_price = TextInput(hint_text='Product Price',multiline=False)
         crud_stock = TextInput(hint_text='Product In Stock',multiline=False)
         crud_sold = TextInput(hint_text='Products Sold',multiline=False)
-        crud_order = TextInput(hint_text='Ordered',multiline=False)
-        crud_purchase = TextInput(hint_text='Last Purchase',multiline=False)
-        crud_submit = Button(text='Add',size_hint_x=None,width=100,on_release=lambda x: self.add_product(crud_code.text,crud_name.text,crud_weight.text,crud_stock.text,crud_sold.text,crud_order.text,crud_purchase.text))
+        crud_submit = Button(text='Add',size_hint_x=None,width=100,on_release=lambda x: self.add_product(crud_code.text,crud_name.text,crud_price.text,crud_stock.text,crud_sold.text))
         target.add_widget(crud_code)
         target.add_widget(crud_name)
-        target.add_widget(crud_weight)
+        target.add_widget(crud_price)
         target.add_widget(crud_stock)
         target.add_widget(crud_sold)
-        target.add_widget(crud_order)
-        target.add_widget(crud_purchase)
         target.add_widget(crud_submit)
         
     def add_user(self, first,last,user,pwd,des):
@@ -110,13 +106,13 @@ class AdminWindow(BoxLayout):
         self.notify.dismiss()
         self.notify.clear_widgets()
 
-    def add_product(self,code,name,weight,stock,sold,order,purchase):
-        if code == '' or name == '' or weight == '' or stock == '' or order == '': 
+    def add_product(self,code,name,price,stock,sold):
+        if code == '' or name == '' or price == '' or  stock == '': 
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
             self.notify.open()
             Clock.schedule_once(self.killswitch,1)
         else:
-            self.products.insert_one({'product_code':code,'product_name':name,'product_weight':weight,'in_stock':stock,'sold':sold,'order':order,'last_purchase':purchase})
+            self.products.insert_one({'product_code':code,'product_name':name, 'product_price':price, 'in_stock':stock,'sold':sold})
             content = self.ids.scrn_product_contents
             content.clear_widgets()
             prodz = self.get_products()
@@ -144,49 +140,44 @@ class AdminWindow(BoxLayout):
         target.clear_widgets()
         crud_code = TextInput(hint_text='Product Code',multiline=False)
         crud_name = TextInput(hint_text='Product Name',multiline=False)
-        crud_weight = TextInput(hint_text='Product Weight',multiline=False)
+        crud_price = TextInput(hint_text='Product Price',multiline=False)
         crud_stock = TextInput(hint_text='Product In Stock',multiline=False)
         crud_sold = TextInput(hint_text='Products Sold',multiline=False)
-        crud_order = TextInput(hint_text='Ordered',multiline=False)
-        crud_purchase = TextInput(hint_text='Last Purchase',multiline=False)
-        crud_submit = Button(text='Update',size_hint_x=None,width=100,on_release=lambda x: self.update_product(crud_code.text,crud_name.text,crud_weight.text,crud_stock.text,crud_sold.text,crud_order.text,crud_purchase.text))
+        crud_submit = Button(text='Update',size_hint_x=None,width=100,on_release=lambda x: self.update_product(crud_code.text,crud_name.text,crud_price.text,crud_stock.text,crud_sold.text))
         target.add_widget(crud_code)
         target.add_widget(crud_name)
-        target.add_widget(crud_weight)
+        target.add_widget(crud_price)
         target.add_widget(crud_stock)
         target.add_widget(crud_sold)
-        target.add_widget(crud_order)
-        target.add_widget(crud_purchase)
         target.add_widget(crud_submit)
         
     def update_user(self, first,last,user,pwd,des):
         pwd = hashlib.sha256(pwd.encode()).hexdigest()
-        # if user == '':
-        #     self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
-        #     self.notify.open()
-        #     Clock.schedule_once(self.killswitch,1)
-        # else:
-        #     user = self.users.find_one({'user_name':user})
-        #     if user == None:
-        #         self.notify.add_widget(Label(text='[color=#FF0000][b]Invalid Username[/b][/color]',markup=True))
-        #         self.notify.open()
-        #         Clock.schedule_once(self.killswitch,1)
-        #     else:
-        if first == '':
-                first = self.users.find_one({'first_name': first})
-        if last == '':
-                last = self.users.find_one({'last_name': last})
-        if pwd == '':
-                pwd = self.users.find_one({'password': pwd})
-        self.users.update_one({'user_name':user},{'$set':{'first_name':first,'last_name':last,'user_name':user,'password':pwd,'designation':des,'date':datetime.now()}})
-        content = self.ids.scrn_contents
-        content.clear_widgets()
-        users = self.get_users()
-        userstable = DataTable(table=users)
-        content.add_widget(userstable)
+        if user == '':
+            self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
+            self.notify.open()
+            Clock.schedule_once(self.killswitch,1)
+        else:
+            user = self.users.find_one({'user_name':user})
+            if user == None:
+                self.notify.add_widget(Label(text='[color=#FF0000][b]Invalid Username[/b][/color]',markup=True))
+                self.notify.open()
+                Clock.schedule_once(self.killswitch,1)
+            else:
+                if first == '':
+                    first = user['first_name']
+                if last == '':
+                    last = user['last_name']
+                if pwd == '':
+                    pwd = user['password']
+                self.users.update_one({'user_name':user},{'$set':{'first_name':first,'last_name':last,'user_name':user,'password':pwd,'designation':des,'date':datetime.now()}})
+                content = self.ids.scrn_contents
+                content.clear_widgets()
+                users = self.get_users()
+                userstable = DataTable(table=users)
+                content.add_widget(userstable)
     
-    def update_product(self,code,name,weight,stock,sold,order,purchase):
-        product_weight = ""
+    def update_product(self,code,name,price,stock,sold):
         if code == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]Code required[/b][/color]',markup=True))
             self.notify.open()
@@ -200,19 +191,15 @@ class AdminWindow(BoxLayout):
             else:
                 if name == '':
                     name = target_code['product_name']
-                if product_weight == '':
-                    product_weight = target_code['product_weight']
+                if product_price == '':
+                    product_price = target_code['product_price']
                 if stock == '':
                     stock = target_code['in_stock']
                 if sold == '':
                     sold = target_code['sold']
-                if order == '':
-                    order = target_code['order']
-                if purchase == '':
-                    purchase = target_code['last_purchase']
                 content = self.ids.scrn_product_contents
                 content.clear_widgets()
-                self.products.update_one({'product_code':code},{'$set':{'product_code':code,'product_name':name,'product_weight':weight,'in_stock':stock,'sold':sold,'order':order,'last_purchase':purchase}})
+                self.products.update_one({'product_code':code},{'$set':{'product_code':code,'product_name':name,'product_price':price, 'in_stock':stock,'sold':sold}})
                 prodz = self.get_products()
                 stocktable = DataTable(table=prodz)
                 content.add_widget(stocktable)
@@ -313,48 +300,34 @@ class AdminWindow(BoxLayout):
         _stocks = OrderedDict()
         _stocks['product_code'] = {}
         _stocks['product_name'] = {}
-        _stocks['product_weight'] = {}
+        _stocks['product_price'] = {}
         _stocks['in_stock'] = {}
         _stocks['sold'] = {}
-        _stocks['order'] = {}
-        _stocks['last_purchase'] = {}
         product_code = []
         product_name = []
-        product_weight = []
+        product_price = []
         in_stock = []
         sold = []
-        order = []
-        last_purchase = []
         for product in products.find():
             product_code.append(product['product_code'])
             name = product['product_name']
             if len(name) > 10:
                 name = name[:10] + '...'
             product_name.append(name)
-            product_weight.append(product['product_weight'])
+            product_price.append(product['product_price'])
             in_stock.append(product['in_stock'])
             try:
                 sold.append(product['sold'])
             except KeyError:
                 sold.append('')
-            try:
-                order.append(product['order'])
-            except KeyError:
-                order.append('')
-            try:
-                last_purchase.append(product['last_purchase'])
-            except KeyError:
-                last_purchase.append('')
         products_length = len(product_code)
         idx = 0
         while idx < products_length:
             _stocks['product_code'][idx] = product_code[idx]
             _stocks['product_name'][idx] = product_name[idx]
-            _stocks['product_weight'][idx] = product_weight[idx]
+            _stocks['product_price'][idx] = product_price[idx]
             _stocks['in_stock'][idx] = in_stock[idx]
             _stocks['sold'][idx] = sold[idx]
-            _stocks['order'][idx] = order[idx]
-            _stocks['last_purchase'][idx] = last_purchase[idx]
             idx += 1
         return _stocks
 
