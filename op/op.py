@@ -4,7 +4,6 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.lang import Builder
-from kivy.garden.notification import Notification
 import re
 from pymongo import MongoClient
 import plyer
