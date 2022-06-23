@@ -22,22 +22,16 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
+        Image:
+            source: 'img/SIMDM.png'
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_x: .2
         Label:
             text: 'Admin Dashboard'
             bold: True
             size_hint: (.8,None)
             height: 30
-        # FlatButton:
-        #     id: loggedin_user
-        #     text: 'user'
-        #     size_hint: (.1,None)
-        #     height: 30
-        #     underline: True
-        #     on_release: file_dropdown.open(self)
-        #     Widget:
-        #         on_parent: file_dropdown.dismiss()
-        #         DropDown:
-        #             id: file_dropdown
     BoxLayout:
         id: content_nav
         BoxLayout:
