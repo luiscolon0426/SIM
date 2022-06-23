@@ -22,6 +22,11 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
+        Image:
+            source: 'img/SIMDM.png'
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_x: .2
         Label:
             text: 'Admin Dashboard'
             bold: True
@@ -37,7 +42,7 @@
         #     Widget:
         #         on_parent: file_dropdown.dismiss()
         #         DropDown:
-        #             id: file_dropdown
+        #           id: file_dropdown
     BoxLayout:
         id: content_nav
         BoxLayout:

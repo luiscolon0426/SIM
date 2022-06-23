@@ -20,6 +20,11 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
+        Image:
+            source: 'img/SIMDM.png'
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_x: .1
         FlatButton:
             id: loggedin_user
             text: 'user'
@@ -27,8 +32,8 @@
             size_hint_x: .1
             underline: True
         Label:
-            text: 'SIM'
-            size_hint_x: .7
+            text: 'POS'
+            size_hint_x: .6
             bold: True
             color: (1,1,1,1)
         FlatButton:
