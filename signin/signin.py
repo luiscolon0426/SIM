@@ -11,7 +11,7 @@ class SigninWindow(BoxLayout):
         super().__init__(**kwargs)
 
     def validate_user(self):
-        client = MongoClient()
+        client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         users = db.users
         user = self.ids.username_field

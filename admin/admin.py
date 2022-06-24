@@ -26,7 +26,7 @@ class Notify(ModalView):
 class AdminWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        client = MongoClient()
+        client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         self.users = db.users
         self.products = db.stocks
@@ -178,6 +178,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(userstable)
     
     def update_product(self,code,name,price,stock,sold):
+        product_price = ''
         if code == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]Code required[/b][/color]',markup=True))
             self.notify.open()
@@ -259,7 +260,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(stocktable)
 
     def get_users(self):
-        client = MongoClient()
+        client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         users = db.users
         _users = OrderedDict()
@@ -294,7 +295,7 @@ class AdminWindow(BoxLayout):
         return _users
 
     def get_products(self):
-        client = MongoClient()
+        client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         products = db.stocks
         _stocks = OrderedDict()
