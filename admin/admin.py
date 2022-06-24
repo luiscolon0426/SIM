@@ -12,8 +12,6 @@ from pymongo import MongoClient
 from utils.datatable import DataTable
 from datetime import datetime
 import hashlib
-import pandas as pd
-import matplotlib.pyplot as plt
 Builder.load_file('admin/admin.kv')
 
 
