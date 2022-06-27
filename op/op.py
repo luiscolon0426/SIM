@@ -7,6 +7,9 @@ from kivy.lang import Builder
 import plyer
 import re
 from pymongo import MongoClient
+import dns.resolver
+dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers=['8.8.8.8']
 Builder.load_file('op/op.kv')
 
 

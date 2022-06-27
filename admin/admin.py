@@ -12,6 +12,9 @@ from pymongo import MongoClient
 from utils.datatable import DataTable
 from datetime import datetime
 import hashlib
+import dns.resolver
+dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers=['8.8.8.8']
 Builder.load_file('admin/admin.kv')
 
 

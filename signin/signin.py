@@ -3,6 +3,9 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from pymongo import MongoClient
 import hashlib
+import dns.resolver
+dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers=['8.8.8.8']
 Builder.load_file('signin/signin.kv')
 
 
