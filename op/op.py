@@ -53,7 +53,7 @@ class OperatorWindow(BoxLayout):
                         message="Item low on stock, reorder soon",
                         timeout=5,
                     )
-                elif temp_qty <= 0:
+                if temp_qty < 0:
                     plyer.notification.notify()(
                         title="Out of stock",
                         message="Item is out of stock",
