@@ -12,8 +12,6 @@ from pymongo import MongoClient
 from utils.datatable import DataTable
 from datetime import datetime
 import hashlib
-import pandas as pd
-import matplotlib.pyplot as plt
 Builder.load_file('admin/admin.kv')
 
 
@@ -157,25 +155,25 @@ class AdminWindow(BoxLayout):
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
             self.notify.open()
             Clock.schedule_once(self.killswitch,1)
-        else:
-            user = self.users.find_one({'user_name':user})
-            if user == None:
-                self.notify.add_widget(Label(text='[color=#FF0000][b]Invalid Username[/b][/color]',markup=True))
-                self.notify.open()
-                Clock.schedule_once(self.killswitch,1)
-            else:
-                if first == '':
-                    first = user['first_name']
-                if last == '':
-                    last = user['last_name']
-                if pwd == '':
-                    pwd = user['password']
-                self.users.update_one({'user_name':user},{'$set':{'first_name':first,'last_name':last,'user_name':user,'password':pwd,'designation':des,'date':datetime.now()}})
-                content = self.ids.scrn_contents
-                content.clear_widgets()
-                users = self.get_users()
-                userstable = DataTable(table=users)
-                content.add_widget(userstable)
+        # else:
+        #     user = self.users.find_one({'user_name':user})
+        #     if user == None:
+        #         self.notify.add_widget(Label(text='[color=#FF0000][b]Invalid Username[/b][/color]',markup=True))
+        #         self.notify.open()
+        #         Clock.schedule_once(self.killswitch,1)
+        #     else:
+        if first == '':
+            first = user[0:9]
+        if last == '':
+            last = user[0:9]
+        if pwd == '':
+            pwd = user[0:9]
+        self.users.update_one({'user_name':user},{'$set':{'first_name':first,'last_name':last,'user_name':user,'password':pwd,'designation':des,'date':datetime.now()}})
+        content = self.ids.scrn_contents
+        content.clear_widgets()
+        users = self.get_users()
+        userstable = DataTable(table=users)
+        content.add_widget(userstable)
     
     def update_product(self,code,name,price,stock,sold):
         product_price = ''
