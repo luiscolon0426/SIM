@@ -107,9 +107,14 @@
                     size_hint_x: .1
                 TextInput:
                     id: name_inp
-                    size_hint_x: .3
+                    size_hint_x: .2
                     multiline: False
                     on_text_validate: root.update_purchases()
+                Button:
+                    text: 'Add'
+                    size_hint_x: .1
+                    on_release: root.update_purchases()
+                    background_color: (0,1,1,1)
             BoxLayout:
                 id: add_to_cart
                 orientation: 'vertical'
