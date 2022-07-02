@@ -12,7 +12,7 @@ Sales & Inventory Management's mission is to help small businesses keep track an
 ### Team & Roles 
 ![AboutUs](https://user-images.githubusercontent.com/84751817/173695925-e2d8e382-e26c-424f-bb1a-637aecd6e1e7.png)
 [Jhonatan Rivera Cruz](https://www.linkedin.com/in/jhonatan-rivera-cruz-242144222/): Team Leader & Back-End <br>
-[Gabriel Lopez Ruiz](https://www.linkedin.com/in/gabriel-l%C3%B3pez-ruiz-4312b792/): Database & Application Testing  
+[Gabriel Lopez Ruiz](https://www.linkedin.com/in/gabriel-l%C3%B3pez-ruiz-4312b792/): Database, Application Tester & Back-End 
 [Luis Colon Santiago](https://www.linkedin.com/in/luis-colon-567356226/): Front-End & Landing Page
 
 ## Usage
