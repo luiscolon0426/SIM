@@ -1,3 +1,7 @@
+"""
+Sign in page:
+Can log in as an Operator or as an Administrator
+"""
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
@@ -10,10 +14,12 @@ Builder.load_file('signin/signin.kv')
 
 
 class SigninWindow(BoxLayout):
+    '''Sign in window'''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def validate_user(self):
+        '''Validates the user in the db'''
         client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         users = db.users
@@ -47,6 +53,7 @@ class SigninWindow(BoxLayout):
 
 
 class SigninApp(App):
+    '''Builder of app'''
     def build(self):
         return SigninWindow()
 
