@@ -1,12 +1,14 @@
+"""
+Main of the application
+"""
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-
 from admin.admin import AdminWindow
 from signin.signin import SigninWindow
 from op.op import OperatorWindow
 
 class MainWindow(BoxLayout):
-
+    '''Window base'''
     admin_widget = AdminWindow()
     signin_widget = SigninWindow()
     operator_widget = OperatorWindow()
@@ -19,6 +21,7 @@ class MainWindow(BoxLayout):
         self.ids.scrn_op.add_widget(self.operator_widget)
 
 class MainApp(App):
+    '''Builder app'''
     def build(self):
 
         return MainWindow()
