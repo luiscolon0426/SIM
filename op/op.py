@@ -1,5 +1,8 @@
-from email import message
-from socket import timeout
+"""
+Operator Window:
+Can sell products by name, adding the quantity.
+Has a receipt that outputs transaction information
+"""
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -14,6 +17,7 @@ Builder.load_file('op/op.kv')
 
 
 class OperatorWindow(BoxLayout):
+    '''Operator init'''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
@@ -24,9 +28,11 @@ class OperatorWindow(BoxLayout):
         self.total = 0.00
 
     def logout(self):
+        '''When log out. redirects to log in page'''
         self.parent.parent.current = 'scrn_si'
         
     def update_purchases(self):
+        '''Updates purchases'''
         pname = self.ids.name_inp.text
         pqty = self.ids.qty_inp.text
         products_container = self.ids.products
@@ -97,6 +103,7 @@ class OperatorWindow(BoxLayout):
 
 
 class OperatorApp(App):
+    '''Builder of app'''
     def build(self):
         return OperatorWindow()
 
