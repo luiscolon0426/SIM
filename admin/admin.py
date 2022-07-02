@@ -1,3 +1,7 @@
+"""
+Administrator window:
+Can add, update or remove: Users &  Products:
+"""
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
@@ -16,12 +20,14 @@ Builder.load_file('admin/admin.kv')
 
 
 class Notify(ModalView):
+    '''Notify'''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.size_hint = (.7,.7)
 
 
 class AdminWindow(BoxLayout):
+    '''Administrator screen'''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
@@ -51,9 +57,11 @@ class AdminWindow(BoxLayout):
         product_scrn.add_widget(prod_table)
 
     def logout(self):
+        '''When log out, redirects to loggin page'''
         self.parent.parent.current = 'scrn_si'
 
     def add_user_fields(self):
+        '''add user fields in manage users'''
         target = self.ids.ops_fields
         target.clear_widgets()
         crud_first = TextInput(hint_text='First Name',multiline=False)
@@ -70,6 +78,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
     
     def add_product_fields(self):
+        '''Add product fields in manage products'''
         target = self.ids.ops_fields_p
         target.clear_widgets()
         crud_code = TextInput(hint_text='Product Code',multiline=False)
@@ -86,6 +95,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
         
     def add_user(self, first,last,user,pwd,des):
+        '''Add a new user in manage user (db)'''
         pwd = hashlib.sha256(pwd.encode()).hexdigest()
         if first == '' or last == '' or user == '' or pwd == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
@@ -101,10 +111,12 @@ class AdminWindow(BoxLayout):
             content.add_widget(userstable)
     
     def killswitch(self,dtx):
+        '''clear fields widgets'''
         self.notify.dismiss()
         self.notify.clear_widgets()
 
     def add_product(self,code,name,price,stock,sold):
+        '''Add a new product in manage products (db)'''
         if code == '' or name == '' or price == '' or  stock == '': 
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
             self.notify.open()
@@ -118,6 +130,7 @@ class AdminWindow(BoxLayout):
             content.add_widget(stocktable)
 
     def update_user_fields(self):
+        '''Update user fields in manage users'''
         target = self.ids.ops_fields
         target.clear_widgets()
         crud_first = TextInput(hint_text='First Name',multiline=False)
@@ -134,6 +147,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
     
     def update_product_fields(self):
+        '''Update product fields in manage products'''
         target = self.ids.ops_fields_p
         target.clear_widgets()
         crud_code = TextInput(hint_text='Product Code',multiline=False)
@@ -150,6 +164,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
         
     def update_user(self, first,last,user,pwd,des):
+        '''Update a user in manage user'''
         pwd = hashlib.sha256(pwd.encode()).hexdigest()
         if user == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
@@ -176,6 +191,7 @@ class AdminWindow(BoxLayout):
         content.add_widget(userstable)
     
     def update_product(self,code,name,price,stock,sold):
+        '''Update a product in manage products'''
         product_price = ''
         if code == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]Code required[/b][/color]',markup=True))
@@ -204,6 +220,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(stocktable)
     
     def remove_user_fields(self):
+        '''Remove user fields in manage user'''
         target = self.ids.ops_fields
         target.clear_widgets()
         crud_user = TextInput(hint_text='User Name')
@@ -212,6 +229,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
     
     def remove_product_fields(self):
+        '''Remove products fields in manage products'''
         target = self.ids.ops_fields_p
         target.clear_widgets()
         crud_code = TextInput(hint_text='Product Code')
@@ -220,6 +238,7 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_submit)
 
     def remove_user(self,user):
+        '''Remove an user in manage users'''
         if user == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
             self.notify.open()
@@ -239,6 +258,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(userstable)
     
     def remove_product(self,code):
+        '''Remove a product in manage products'''
         if code == '':
             self.notify.add_widget(Label(text='[color=#FF0000][b]All Fields Required[/b][/color]',markup=True))
             self.notify.open()
@@ -258,6 +278,7 @@ class AdminWindow(BoxLayout):
                 content.add_widget(stocktable)
 
     def get_users(self):
+        '''Gets users from database'''
         client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         users = db.users
@@ -293,6 +314,7 @@ class AdminWindow(BoxLayout):
         return _users
 
     def get_products(self):
+        '''Get products from database'''
         client = MongoClient("mongodb+srv://sim:Holberton@sim.cjkvehd.mongodb.net/?retryWrites=true&w=majority")
         db = client.silverpos
         products = db.stocks
@@ -331,6 +353,7 @@ class AdminWindow(BoxLayout):
         return _stocks
 
     def change_screen(self, instance):
+        '''Changes between screens'''
         if instance.text == 'Manage Products':
             self.ids.scrn_mngr.current = 'scrn_product_content'
         elif instance.text == 'Manage Users':
@@ -340,6 +363,7 @@ class AdminWindow(BoxLayout):
 
 
 class AdminApp(App):
+    '''Builder of app'''
     def build(self):
         return AdminWindow()
 
