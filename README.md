@@ -16,14 +16,21 @@ Sales & Inventory Management's mission is to help small businesses keep track an
 [Luis Colon Santiago](https://www.linkedin.com/in/luis-colon-567356226/): Front-End & Landing Page
 
 ## Usage
-placeholder
+You can download the program  at http://luiscolon0426.github.io/ <br>
+At the moment it can only be download with Windowns.
 
 ## Known bugs
+In Operator page: when selling products the multiplication sometimes is not logic. <br>
+When selling a product, it updates in the db, but does not refresh in admin page.
+
 
 ## Contributing
 Feel free to contribute by testing out the app and letting us know of any bugs currently present so that we may proceed to squash them.
 
 ## Future features
+* Sign up feature
+* Import & Export of a csv file
+* Product Analysis
 
 
 ![SIMbackround](https://user-images.githubusercontent.com/84751817/173695583-cdf51473-564e-45b7-a4f0-683fee6fa41b.png)
