@@ -1,0 +1,133 @@
+<FlatButton@ButtonBehavior+Label>:
+# Styles for the FlatButton widget
+    font_size: 14
+
+<OpWindow>:
+# Styles for the OpWindow screen
+    id: main_win
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: (1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+    # Styles for the header box
+        id: header
+        size_hint_y: None
+        height: 40
+        canvas.before:
+            Color:
+                rgba: (0,0,0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: 'SIM'
+            size_hint_x: .9
+            bold: True
+            color: (1,1,1,1)
+        FlatButton:
+            id: loggedin_user
+            text: 'admin'
+            color: (1,1,1,1)
+
+    BoxLayout:
+    # Styles for the current item box
+        id: current
+        size_hint_y: None
+        height: 50
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Button:
+            text: 'Current Item:'
+            background_normal: ''
+            background_color: (.4,.4,.4,1)
+            size_hint_x: .4
+        Button:
+            id: cur_product
+            text: 'Default Product'
+            background_normal: ''
+            background_color: (.4,.4,.4,1)
+    BoxLayout:
+    # Styles for the details box
+        padding: 10
+        BoxLayout:
+            id: product_details
+            orientation: "vertical"
+            size_hint_x: .8
+            spacing: 10
+            BoxLayout:
+                id: product_labels
+                size_hint_y: None
+                height: 40
+                canvas.before:
+                    Color:
+                        rgba: (0,0,0,1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                FlatButton:
+                    text: 'Qty'
+                    size_hint_x: .2
+                FlatButton:
+                    text: 'Product Name'
+                    size_hint_x: .8
+            BoxLayout:
+                id: product_inputs
+                size_hint_y: None
+                height: 30
+                spacing: 5
+                TextInput:
+                    id: qty_input
+                    size_hint_x: .2
+                TextInput:
+                    id: name_input
+                    size_hint_x: .8
+                    multiline: False
+                    on_text_validate: root.update_purchases()
+            BoxLayout:
+                id: add_to_cart
+                orientation: 'vertical'
+                BoxLayout:
+                    size_hint_y: None
+                    height: 30
+                    canvas.before:
+                        Color:
+                            rgba: (0,0,0,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    Label:
+                        text: 'Code'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Product name'
+                        size_hint_x: .5
+                    Label:
+                        text: 'Qty'
+                        size_hint_x: .1
+                    Label:
+                        text: 'Product total'
+                        size_hint_x: .2
+                GridLayout:
+                    id: products
+                    cols: 1
+    BoxLayout:
+    # Styles for the footer box
+        id: footer
+        size_hint_y: None
+        height: 30
+        canvas.before:
+            Color:
+                rgba: (0,0,0,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Luis Colon - Jhonatan Rivera - Gabriel Lopez'
